@@ -13,12 +13,11 @@ class RegisterController extends Controller
 
     public function store()
     {
-        // create the user
         request()->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
+            'name' => 'required|max:255  ',
+            'username' => 'required|max:225|min:3',
+            'email' => 'required|email|max:225',
+            'password' => 'required|min:7|max:255'
         ]);
     }
 }

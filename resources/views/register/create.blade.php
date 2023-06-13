@@ -4,6 +4,8 @@
             <h1 class="text-center font-bold text-xl">Register</h1>
 
             <form method="POST" action="/register" class="mt-10">
+                @csrf
+
                 <div class="mb-6">
                     <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="name">
                         Name
@@ -13,6 +15,7 @@
                            type="text"
                            name="name"
                            id="name"
+                           placeholder="John Doe"
                            required
                     >
                 </div>
@@ -26,6 +29,21 @@
                            type="text"
                            name="username"
                            id="username"
+                           placeholder="john123"
+                           required
+                    >
+                </div>
+
+                <div class="mb-6">
+                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email">
+                        Email
+                    </label>
+
+                    <input class="border border-gray-400 p-2 w-full"
+                           type="email"
+                           name="email"
+                           id="email"
+                           placeholder="email@example.com"
                            required
                     >
                 </div>
@@ -39,6 +57,7 @@
                            type="password"
                            name="password"
                            id="password"
+                           placeholder="Your password"
                            required
                     >
                 </div>
