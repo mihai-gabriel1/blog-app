@@ -1,0 +1,38 @@
+body {
+    background: #fafcff;
+    max-width: 600px !important;
+    margin: 0 auto;
+}
+
+ article {
+     margin-bottom: 50px;
+     color: grey;
+     border-top: 1px solid #000000;
+ }
+
+ a {
+     color: red;
+ }
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+a:hover {
+   border-bottom: 3px solid #000000;
+}
+
+a:active { text-decoration: none; }
+
+.articles h1 {
+    color: red;
+}
+
+.go-back {
+    font-size: 20px;
+}
+
+input {
+    padding-left: 5px;
+}
