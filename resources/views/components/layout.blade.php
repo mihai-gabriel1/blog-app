@@ -12,6 +12,7 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
     .clamp.one-line {
         -webkit-line-clamp: 1;
     }
@@ -26,10 +27,20 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0">
-            <a href="/" class="text-xs font-bold uppercase">Home Page</a>
+        <div class="mt-8 md:mt-0 flex items-center">
+            @auth()
+                <span class="text-xs font-bold uppercase">Welcome back, {{auth()->user()->name}}!</span>
 
-            <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-3">
+                    @csrf
+
+                    <button type="submit" class="text-sm font-semibold text-blue-500">Log out</button>
+                </form>
+            @else
+                <a href="/register" class="text-xs font-bold uppercase">Register</a>
+                <a href="/login" class="ml-3 text-xs font-bold uppercase">Log in</a>
+            @endauth
+                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates
             </a>
         </div>
@@ -65,4 +76,5 @@
         </div>
     </footer>
 </section>
+<x-flash/>
 </body>
