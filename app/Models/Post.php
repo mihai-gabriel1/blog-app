@@ -29,6 +29,11 @@ class Post extends Model
         );
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
