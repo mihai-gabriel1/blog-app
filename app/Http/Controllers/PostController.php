@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 
@@ -23,5 +24,14 @@ class PostController extends Controller
         return view('posts.show', [
             'post' => $post
         ]);
+    }
+
+    public function create()
+    {
+        if (auth()->user()?->username != 'Gabriel') {
+            abort(\Symfony\Component\HttpFoundation\Response::HTTP_FORBIDDEN);
+        }
+
+        return view('posts.create');
     }
 }

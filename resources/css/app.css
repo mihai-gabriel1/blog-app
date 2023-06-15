@@ -1,3 +1,11 @@
 article {
     margin: 0 auto;
 }
+
+p {
+    font-size: 90px !important;
+}
+
+article {
+    font-size: 90px !important;
+}
