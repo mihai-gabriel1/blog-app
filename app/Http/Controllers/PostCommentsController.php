@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post; // Add this line to import the Post model
 use Illuminate\Http\Request;
 
 class PostCommentsController extends Controller
@@ -14,9 +15,14 @@ class PostCommentsController extends Controller
 
         $post->comments()->create([
             'user_id' => request()->user()->id,
-            'body' => request('body')
+            'body' => request('body'),
+            'post_id' => $post->id // Assign the post_id explicitly
         ]);
 
         return back();
     }
+
+
+
+
 }
