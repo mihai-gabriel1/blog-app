@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post; // Add this line to import the Post model
+use App\Models\Post;
+use App\Models\Comment; // Add this line to import the Comment model
 use Illuminate\Http\Request;
 
 class PostCommentsController extends Controller
@@ -13,16 +14,16 @@ class PostCommentsController extends Controller
             'body' => 'required'
         ]);
 
-        $post->comments()->create([
-            'user_id' => request()->user()->id,
+        $user = request()->user();
+
+        $comment = new Comment([
+            'user_id' => $user->id,
             'body' => request('body'),
-            'post_id' => $post->id // Assign the post_id explicitly
+            'post_id' => $post->id, // Set the post_id explicitly
         ]);
+
+        $comment->save(); // Save the comment
 
         return back();
     }
-
-
-
-
 }

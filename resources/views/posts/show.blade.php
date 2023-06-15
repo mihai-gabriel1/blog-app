@@ -48,9 +48,8 @@
                 </div>
 
                 <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                    @auth()
                     <x-panel>
-
-
                         <form method="POST" action="/posts/{{ $post->slug }}/comments"
                               class="border border-gray-200 p-6 rounded-xl">
                             @csrf
@@ -63,7 +62,13 @@
 
                             <div>
                                 <textarea name="body" class="w-full mt-3 p-1" id="" cols="30" rows="7"
-                                          placeholder="Quick, share your thoughts on this article!"></textarea>
+                                          placeholder="Quick, share your thoughts on this article!">
+
+                                </textarea>
+
+                                @error('body')
+                                <span class="text-xs" style="color: red">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div>
@@ -79,7 +84,7 @@
                         <x-post-comment :comment="$comment"/>
                     @endforeach
                 </section>
-
+                @endauth
             </article>
         </main>
     </section>
